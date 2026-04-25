@@ -1,0 +1,162 @@
+
+Action: file_editor create /app/frontend/src/index.css --file-text "@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sp-bg: #F8FAFC;
+  --sp-surface: #FFFFFF;
+  --sp-text: #0F172A;
+  --sp-text-2: #64748B;
+  --sp-text-3: #94A3B8;
+  --sp-brand: #0066FF;
+  --sp-brand-hover: #0052CC;
+  --sp-brand-light: #E6F0FF;
+  --sp-coral: #FF6B6B;
+  --sp-coral-bg: #FFEBEB;
+  --sp-mint: #06D6A0;
+  --sp-mint-bg: #E6FFF7;
+  --sp-amber: #FFD166;
+  --sp-amber-bg: #FFF9E6;
+  --sp-border: #E2E8F0;
+}
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 100% 71%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 100% 50%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    background: var(--sp-bg);
+    color: var(--sp-text);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+.sp-card {
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 24px rgba(15,23,42,0.04);
+  transition: all .3s ease;
+}
+.sp-card:hover {
+  box-shadow: 0 8px 32px rgba(15,23,42,0.08);
+}
+.sp-btn-primary {
+  background: var(--sp-brand);
+  color: #fff;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: all .2s ease;
+}
+.sp-btn-primary:hover {
+  background: var(--sp-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0,102,255,0.2);
+}
+.sp-btn-primary:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+.sp-btn-secondary {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 700;
+  transition: all .2s ease;
+}
+.sp-btn-secondary:hover {
+  background: #e2e8f0;
+}
+.sp-input {
+  width: 100%;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid transparent;
+  padding: 12px 16px;
+  font-weight: 500;
+  color: #0f172a;
+  transition: all .2s ease;
+}
+.sp-input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--sp-brand);
+  box-shadow: 0 0 0 4px rgba(0,102,255,0.12);
+}
+.sp-label {
+  display: block;
+  font-size: .875rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+}
+.sp-glass-header {
+  background: rgba(255,255,255,.75);
+  backdrop-filter: saturate(150%) blur(20px);
+  -webkit-backdrop-filter: saturate(150%) blur(20px);
+  border-bottom: 1px solid rgba(226,232,240,.6);
+}
+
+.sp-rating-pill {
+  flex: 1;
+  border-radius: 14px;
+  padding: 14px 12px;
+  font-weight: 700;
+  font-size: .875rem;
+  transition: all .2s ease;
+  border: 2px solid transparent;
+}
+.sp-rating-pill[data-active=\"true\"][data-kind=\"revise_again\"] {
+  background: var(--sp-coral-bg); color: var(--sp-coral); border-color: var(--sp-coral);
+}
+.sp-rating-pill[data-active=\"true\"][data-kind=\"need_more_time\"] {
+  background: var(--sp-amber-bg); color: #B45309; border-color: var(--sp-amber);
+}
+.sp-rating-pill[data-active=\"true\"][data-kind=\"perfect\"] {
+  background: var(--sp-mint-bg); color: var(--sp-mint); border-color: var(--sp-mint);
+}
+
+@keyframes sp-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sp-fade-up { animation: sp-fade-up .4s ease-out both; }
+"
+Observation: Overwrite successful: /app/frontend/src/index.css

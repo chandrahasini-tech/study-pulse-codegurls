@@ -1,0 +1,36 @@
+
+Action: file_editor view /app/test_reports/iteration_1.json
+Observation: [Showing lines 1-32 of 32 total] /app/test_reports/iteration_1.json:
+1|{
+2|  "summary": "Tested StudyPulse end-to-end. Backend: 21/21 pytest cases pass. Frontend: Register -> 3-step Onboarding -> Dashboard works. Dashboard renders progress chart, readiness gauge (8% / 10 days), focus subjects, weekly hours, and missed-today banner. Daily log page loads with subject dropdown pre-populated. Auth via httpOnly cookie works (cookies persist across requests).",
+3|  "backend_issues": {"critical": [], "minor": []},
+4|  "frontend_issues": {
+5|    "ui_bugs": [],
+6|    "integration_issues": [],
+7|    "design_issues": [
+8|      {"screen": "Dashboard header", "issues": ["Top-right user greeting overlaps the success toast on first load (toast 'You're all set!' covers 'Hi, SDET User')"]},
+9|      {"screen": "Onboarding step 1", "issues": ["Subject name and Chapter inputs lack visible labels (only placeholders) and no data-testid attributes"]}
+10|    ]
+11|  },
+12|  "test_report_links": ["/app/backend/tests/backend_test.py", "/app/test_reports/pytest/pytest_results.xml"],
+13|  "action_items": [
+14|    "Add data-testid attributes to all interactive elements (register form, onboarding inputs, log form rating pills, logout button) for stable automated testing",
+15|    "Backend FRONTEND_URL env (f0a5dce6-...) does not match the actual public origin (progress-pulse-566...). Same-origin proxy works today, but if a different origin ever calls the API, CORS will fail with credentials. Recommend setting FRONTEND_URL to the actual REACT_APP_BACKEND_URL or allowing the Emergent preview wildcard.",
+16|    "Fix toast positioning on dashboard so it does not overlap user name in header"
+17|  ],
+18|  "critical_code_review_comments": [
+19|    "server.py is ~510 LOC and mixes auth/profile/logs/analytics — split into routers for maintainability before it grows",
+20|    "set_auth_cookies uses secure=False; should be True in production (HTTPS)",
+21|    "feedback() endpoint loads all logs into memory twice (revise list and per-subject loop) — consider single aggregation for scale",
+22|    "subjects_analytics duplicates the unique-topics computation by re-iterating items per subject; can be done in one pass"
+23|  ],
+24|  "updated_files": ["/app/backend/tests/backend_test.py"],
+25|  "success_rate": {"backend": "100%", "frontend": "95%"},
+26|  "test_credentials": "admin@studypulse.com / admin123 (verified working). New users can register freely.",
+27|  "seed_data_creation": "Created multiple TEST_ users via /api/auth/register during pytest; 1 SDET user via UI (sdet_<ts>@studypulse.com / Passw0rd!) with onboarding completed (Math + Algebra/Calculus/Geometry, target 85, exam +10d).",
+28|  "retest_needed": false,
+29|  "main_agent_can_self_test": true,
+30|  "context_for_next_testing_agent": "All 21 backend pytest tests in /app/backend/tests/backend_test.py pass. Frontend register->onboarding->dashboard->daily-log->subjects->logout flow validated via Playwright. Selectors rely on placeholders/text since data-testid attributes are missing — adding them would make UI tests more robust."
+31|}
+32|
+[End of file]
